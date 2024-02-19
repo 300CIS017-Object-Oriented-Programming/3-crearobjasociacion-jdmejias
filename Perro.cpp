@@ -3,15 +3,18 @@
 
 
 // Ejemplo de constructor por defecto con lista inicializadora
+Perro::Perro(): nombre(" "),edad(0), raza(""),tamanio(""), color(""){}
 // Perro::Perro() : edad(0), raza(""), tamanio(""), color("") {}
 
 // Ejemplo de constructor por defecto iniciando los atributos en el cuerpo del constructor
+/*
 Perro::Perro() {
     this->edad = 0;
     this->raza = "";
     this->tamanio = "";
     this->color = "";
 }
+*/
 
 void Perro::ladrar() {
     std::cout << "Guau Guau" << std::endl;
@@ -22,12 +25,23 @@ void Perro::agregarPropietario(std::string nombre, std::string docIdentidad) {
     // Es memoria dinámica, en el destructor se debe liberar
     this->pPropietario = new Propietario(nombre, docIdentidad);
 }
-
+void Perro::agregarVeterinario(Veterinario *veterinario) {
+    nVeterinario = veterinario;
+}
 void Perro::setPropietario(Propietario *pPropietario) {
     this->pPropietario = pPropietario;
 }
+Veterinario *Perro::getVeterinario(){
+    return nVeterinario;
+}
 Propietario *Perro::getPropietario() {
     return this->pPropietario;
+}
+void Perro::agregarRaza(Raza *raza){
+    nRaza = raza;
+}
+Raza* Perro::getClassRaza(){
+    return nRaza;
 }
 
 int Perro::getEdad() {
